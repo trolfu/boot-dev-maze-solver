@@ -21,6 +21,16 @@ def main():
     missing_right_cell.has_right_wall = False
     missing_right_cell.draw()
 
+    move_cell1 = Cell(500, 500, 600, 600, win)
+    move_cell2 = Cell(500, 400, 600, 500, win)
+    move_cell3 = Cell(500, 300, 600, 400, win)
+
+    move_cell1.draw()
+    move_cell2.draw()
+    move_cell3.draw()
+    move_cell1.draw_move(move_cell2)
+    move_cell2.draw_move(move_cell3, True)
+
     win.wait_for_close()
 
 main()

@@ -26,3 +26,13 @@ class Cell:
             self.__window.draw_line(Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1)), self.__wall_color)
         if self.has_bottom_wall:
             self.__window.draw_line(Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2)), self.__wall_color)
+
+    def get_center_point(self) -> Point:
+        return Point((self.__x1 + self.__x2) / 2, (self.__y1 + self.__y2) / 2)
+
+    def draw_move(self, to_cell, undo = False):
+        """Draws a move between two cells"""
+        self_center = self.get_center_point()
+        other_center = to_cell.get_center_point()
+
+        self.__window.draw_line(Line(self_center, other_center), "grey" if undo else "red")
